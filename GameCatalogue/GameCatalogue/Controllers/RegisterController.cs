@@ -52,8 +52,11 @@ namespace GameCatalogue.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
         public async Task<IActionResult> CreateUser(CreateUserModel input)
         {
-            var newUser = new User(input.Name);
-            newUser.Email = input.Email;
+            var newUser = new User(input.Username);
+            newUser.FirstName = input.FirstName;
+            newUser.SecondName = input.SecondName;
+            newUser.LastName = input.LastName;
+            newUser.create_at = DateTime.Now;
 
             var tmp1 = await _userManager.CreateAsync(newUser, input.Password);
             return Ok();

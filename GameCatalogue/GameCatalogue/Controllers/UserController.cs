@@ -23,16 +23,17 @@ namespace GameCatalogue.Controllers
             _service = service;
         }
 
-        [HttpPut("Update Email")]
+
+        [HttpPut("Update Username")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public IActionResult UpdateEmail(string email)
+        public IActionResult UpdateUsername(string new_name)
         {
             try
             {
                 var user_id = _service.GetUserId();
                 var testData = _DbContext.Users.Single(x => x.Id == user_id);
 
-                testData.Email = email;
+                testData.UserName = new_name;
 
                 _DbContext.Users.Update(testData);
                 _DbContext.SaveChanges();
@@ -43,6 +44,102 @@ namespace GameCatalogue.Controllers
                 return BadRequest(ModelState);
             }
             return Ok();
+        }
+
+        [HttpPut("Update Userfirst")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult UpdateFirstName(string new_name)
+        {
+            try
+            {
+                var user_id = _service.GetUserId();
+                var testData = _DbContext.Users.Single(x => x.Id == user_id);
+
+                testData.FirstName = new_name;
+
+                _DbContext.Users.Update(testData);
+                _DbContext.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                ModelState.AddModelError("Id", "There is no user with the given properties");
+                return BadRequest(ModelState);
+            }
+            return Ok();
+        }
+
+        [HttpPut("Update Secondname")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult UpdateSecondName(string new_name)
+        {
+            try
+            {
+                var user_id = _service.GetUserId();
+                var testData = _DbContext.Users.Single(x => x.Id == user_id);
+
+                testData.SecondName = new_name;
+
+                _DbContext.Users.Update(testData);
+                _DbContext.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                ModelState.AddModelError("Id", "There is no user with the given properties");
+                return BadRequest(ModelState);
+            }
+            return Ok();
+        }
+
+        [HttpPut("Update LastName")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult UpdateLastNamee(string new_name)
+        {
+            try
+            {
+                var user_id = _service.GetUserId();
+                var testData = _DbContext.Users.Single(x => x.Id == user_id);
+
+                testData.LastName = new_name;
+
+                _DbContext.Users.Update(testData);
+                _DbContext.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                ModelState.AddModelError("Id", "There is no user with the given properties");
+                return BadRequest(ModelState);
+            }
+            return Ok();
+        }
+
+
+        [HttpPut("Update Password")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> UpdatePassword(string new_pass)
+        {
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    ModelState.AddModelError("Id", "There is no user with the given properties");
+                    return BadRequest(ModelState);
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, user.PasswordHash, new_pass);
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("Password", "Failed to change password");
+                    return BadRequest(ModelState);
+                }
+
+                return Ok();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "An error occurred while updating password");
+                return BadRequest(ModelState);
+            }
         }
     }
 }

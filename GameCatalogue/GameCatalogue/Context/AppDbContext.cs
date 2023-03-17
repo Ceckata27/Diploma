@@ -12,8 +12,5 @@ namespace GameCatalogue.App_Db_Context
         {
 
         }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Tag> Tags { get; set; }
     }
 }

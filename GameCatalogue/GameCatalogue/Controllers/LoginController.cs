@@ -58,10 +58,10 @@ namespace GameCatalogue.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginModel input)
         {
-            var user = await _userManager.FindByEmailAsync(input.Email);
+            var user = await _userManager.FindByNameAsync(input.Username);
             if (user == null)
             {
-                ModelState.AddModelError("", "Error in email check");
+                ModelState.AddModelError("", "Error in username check");
                 return BadRequest(ModelState);
             }
 

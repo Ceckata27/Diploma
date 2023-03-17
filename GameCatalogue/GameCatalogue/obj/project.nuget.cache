@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Nj70hD/rI6XMPJ9h2treRyusAx0UjA46wQSb3ajMffBTWcFfK1FmQ5hvHZ5p3KFwb11vkky8Ix/jRqg/cKIaCA==",
+  "dgSpecHash": "5DQyaeQ3G8BKE/YGznm316UwR3pB8FMCnMWEMSdgd6oK2Gir/5j/YirVMqDeFIiQHlrpYFQd3P0PisLrllXgbA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zhele\\Downloads\\GameCatalogue\\GameCatalogue\\GameCatalogue.csproj",
+  "projectFilePath": "C:\\Users\\zhele\\Documents\\GitHub\\GameCatalog\\GameCatalogue\\GameCatalogue\\GameCatalogue.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zhele\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\zhele\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
